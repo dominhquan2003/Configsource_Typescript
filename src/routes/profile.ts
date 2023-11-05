@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const ProfileController = require('../controllers/ProfileController');
+import ProfileController from '../controllers/ProfileController';
 
 
 router.get('/', ProfileController.getProfile);
