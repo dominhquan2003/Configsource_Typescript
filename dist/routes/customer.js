@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const router = express.Router();
-const CustomerController = require('../controllers/CustomerController.ts');
+const CustomerController = require('../controllers/CustomerController');
 router.get('/', CustomerController.getListCustomer);
 router.get('/add', CustomerController.getAddCustomer);
 exports.default = router;
