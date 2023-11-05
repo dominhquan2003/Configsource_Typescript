@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect dist/index.js",
+    "start": "nodemon --inspect dist/src/index.js",
     "build": "tsc",
     "start1": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1",

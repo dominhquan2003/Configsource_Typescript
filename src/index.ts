@@ -1,8 +1,9 @@
 import express from "express";
 import morgan from "morgan"; 
 
-import handlebars from 'express-handlebars';
-
+// import handlebars from 'express-handlebars';
+import expressHandlebars from 'express-handlebars';
+import { configureHandlebars } from './handlebars-instance';
 import path from "path";
 import route from "./routes/route";
 import('reflect-metadata');
@@ -20,18 +21,26 @@ app.use(
     extended: true,
   })
 );
-app.engine(
-  "hbs",
-  handlebars.engine({
-    defaultLayout: "main",
-    extname: "hbs",
-    helpers: {
-      sum: (a, b) => a + b,
-    },
-  })
-);
-app.set("view engine", "hbs");
+// app.set("view engine", "hbs");
+// app.engine(
+//   "hbs",
+//   handlebars.engine({
+//     defaultLayout: "main",
+//     extname: "hbs",
+//     helpers: {
+//       sum: (a, b) => a + b,
+//     },
+//   })
+// );
 
+const viewInstance = expressHandlebars.create({
+  defaultLayout: 'main.hbs',
+  extname: '.hbs',
+  handlebars: configureHandlebars(),
+});
+
+app.engine('hbs', viewInstance.engine);
+app.set('view engine', 'hbs');
 
 
 app.set("views", path.join(__dirname, "resources", "views"));
