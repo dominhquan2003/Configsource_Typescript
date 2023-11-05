@@ -1,6 +1,8 @@
 import express from "express";
 import morgan from "morgan"; 
-import handlebars from "express-handlebars"; 
+
+import handlebars from 'express-handlebars';
+
 import path from "path";
 import route from "./routes/route";
 import('reflect-metadata');
@@ -29,16 +31,17 @@ app.engine(
   })
 );
 app.set("view engine", "hbs");
+
+
+
 app.set("views", path.join(__dirname, "resources", "views"));
-
 route(app);
-
 
 app.use((req, res, next) => {
   res.render('error/pages-error',{layout: false});
 });
-
 //127.0.0.1 -localhost
 app.listen(port, () => {
   console.log(` App listening on port http://localhost:` + `${port}`);
 });
+

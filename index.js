@@ -1,14 +1,14 @@
-const express = require("express");
-const morgan = require("morgan"); 
-const handlebars = require("express-handlebars"); 
-const path = require("path");
-const route = require("./src/routes/route.ts");
+import express from "express";
+import morgan from "morgan"; 
+import handlebars from "express-handlebars"; 
+import path from "path";
+import route from "./src/routes/route";
 require('reflect-metadata');
 
 const app = express();
 const port = 8000;
 
-app.use(morgan("combined"));
+// app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 app.use(express.json());
@@ -29,6 +29,8 @@ app.engine(
   })
 );
 app.set("view engine", "hbs");
+
+
 app.set("views", path.join(__dirname, "resources", "views"));
 
 route(app);

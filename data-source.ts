@@ -8,7 +8,7 @@ const dataSource = new DataSource({
       database: 'pos',
       synchronize: true,
       logging: true,
-      entities: ["./entity/*"],
+      entities: ["./src/entity/*"],
       subscribers: [],
       migrations: [],
 })

@@ -1,4 +1,4 @@
-import dataSource from "../data-source";
+import dataSource from "../../data-source";
 import Category from '../entity/Category' ; 
 class CategoryController {
       async getListCategories(req, res, next) {
