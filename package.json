@@ -1,0 +1,35 @@
+{
+  "name": "organicfruit",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start1": "node dist/index.js",
+    "build": "tsc",
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "schema:sync": "ts-node -r tsconfig-paths/register -P ./tsconfig.json ./node_modules/typeorm/cli.js schema:sync -d ./src/data-source.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "module-alias": "^2.2.3",
+    "mongoose": "^7.5.4",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.0.1",
+    "reflect-metadata": "^0.1.13",
+    "tsconfig-paths": "^4.2.0",
+    "typeorm": "^0.3.17",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.20",
+    "@types/node": "^20.8.10",
+    "ts-node": "^10.9.1"
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "version": "2.4.2",
+    "compilerOptions": {
+        "lib": [
+            "es5",
+            "es6"
+        ],
+        "esModuleInterop": true,
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "@controllers/*": [
+                "src/controllers"
+            ],
+            "@entity/*": [
+                "src/entity"
+            ],
+            
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "src/public"
+    ],
+    "include": [
+        "src/**/*",
+        "./data-source.ts"
+    ]
+}
