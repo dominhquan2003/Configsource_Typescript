@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "tsc --watch & NODE_ENV=development nodemon dist/src",
     "start": "nodemon --inspect dist/src/index.js",
     "build": "tsc",
-    "start1": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "schema:sync": "ts-node -r tsconfig-paths/register -P ./tsconfig.json ./node_modules/typeorm/cli.js schema:sync -d ./data-source.ts"
+    "schema:sync": "ts-node -r tsconfig-paths/register -P ./tsconfig.json ./node_modules/typeorm/cli.js schema:sync -d ./data-source.ts",
+    "postbuild": "yarn copyfiles",
+    "copyfiles": "mkdir -p dist/src/resources/views && cp -r src/resources/views dist/src/resources"
   },
   "keywords": [],
   "author": "",
@@ -21,12 +23,12 @@
     "nodemon": "^3.0.1",
     "reflect-metadata": "^0.1.13",
     "tsconfig-paths": "^4.2.0",
-    "typeorm": "^0.3.17",
-    "typescript": "^5.2.2"
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@types/express": "^4.17.20",
     "@types/node": "^20.8.10",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }

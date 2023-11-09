@@ -1,15 +1,13 @@
 import express from "express";
-import morgan from "morgan"; 
+import morgan from "morgan";
 
-// import handlebars from 'express-handlebars';
-import expressHandlebars from 'express-handlebars';
-import { configureHandlebars } from './handlebars-instance';
+import { engine } from 'express-handlebars'
 import path from "path";
 import route from "./routes/route";
 import('reflect-metadata');
 
 const app = express();
-const port = 8000;
+const port = 5000;
 
 app.use(morgan("combined"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -21,28 +19,15 @@ app.use(
     extended: true,
   })
 );
-// app.set("view engine", "hbs");
-// app.engine(
-//   "hbs",
-//   handlebars.engine({
-//     defaultLayout: "main",
-//     extname: "hbs",
-//     helpers: {
-//       sum: (a, b) => a + b,
-//     },
-//   })
-// );
 
-const viewInstance = expressHandlebars.create({
-  defaultLayout: 'main.hbs',
-  extname: '.hbs',
-  handlebars: configureHandlebars(),
-});
-
-app.engine('hbs', viewInstance.engine);
+app.engine('hbs', engine({
+    defaultLayout: "main",
+    extname: "hbs",
+    helpers: {
+      sum: (a, b) => a + b,
+    },
+  }));
 app.set('view engine', 'hbs');
-
-
 app.set("views", path.join(__dirname, "resources", "views"));
 route(app);
 
